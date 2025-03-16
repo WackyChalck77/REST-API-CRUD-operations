@@ -13,13 +13,6 @@ Put/tasks/update - обновление статуса задачи<br>
 Delete/tasks/delete/:taskIDToDelete - удаление задачи<br>
 
 ## Примеры выполнения CRUD-операций
-### Получение списка всех имеющихся задач
-Используется метод GET http://127.0.0.1:3000/tasks/.<br>
-Происходит выдача таблицы задач,
-[Postman](img/img_1.jpg).
-Таблица в Postgres,
-[Postgres](img/img_2.jpg).
-
 ### Создание новой задачи
 Используется метод POST http://127.0.0.1:3000/tasks/add/. Данные передаются в следующем виде (JSON): <br>
 {  
@@ -34,15 +27,31 @@ Delete/tasks/delete/:taskIDToDelete - удаление задачи<br>
 Таблица в Postgres,
 [Postgres](img/img_4.jpg).
 
+### Получение списка всех имеющихся задач
+Используется метод GET http://127.0.0.1:3000/tasks/.<br>
+Происходит выдача таблицы задач,
+[Postman](img/img_1.jpg).
+Таблица в Postgres,
+[Postgres](img/img_2.jpg).
+
 ### Обновление статуса задачи
-Используется метод POST http://127.0.0.1:3000/tasks/update/. Данные передаются в следующем виде (JSON): <br>
+Используется метод PUT http://127.0.0.1:3000/tasks/update/. Данные передаются в следующем виде (JSON): <br>
 {  
 "ID": 6,  
 "Status": "done"  
 }  
 Происходит вставка нового статуса задачи в таблицу в задачу с соответствующим ID,
-[Postman](img/img_4.jpg).
+[Postman](img/img_5.jpg).
 Таблица в Postgres,
-[Postgres](img/img_5.jpg).
+[Postgres](img/img_6.jpg).
+
+### Обновление статуса задачи
+Используется метод DELETE http://127.0.0.1:3000/tasks/:taskIDToDelete. Данные по ID удаляемой задачи передаются в ссылке: http://127.0.0.1:3000/tasks/delete/31.  
+Происходит удаление задачи с соответствующим ID в таблице,
+[Postman](img/img_7.jpg).
+Таблица в Postgres,
+[Postgres](img/img_8.jpg).
+
+
 
 
