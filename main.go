@@ -137,7 +137,7 @@ func GetAllTasks(c *fiber.Ctx) error {
 }
 
 // Создать задачу
-func CreateTask(test_task model.Task) interface{} {
+func CreateTask(test_task model.Task) string {
 	db := Connect()
 	defer db.Close()
 	create, err := db.Prepare("insert into tasks (title, description, status) values ($1, $2, $3);")
@@ -155,8 +155,10 @@ func CreateTask(test_task model.Task) interface{} {
 		log.Fatal(err.Error())
 	}
 	fmt.Println(lastInsertedID)
-	fmt.Printf("\n Ззадача [%v] успешно добавлена", test_task.Title)
-	return lastInsertedID
+	lastInsertedIDString := fmt.Sprint(lastInsertedID)
+	fmt.Printf("\n Ззадача [%v] успешно добавлена под номером [%v]", test_task.Title, lastInsertedIDString)
+	returnString := fmt.Sprintf("\n Ззадача [%v] успешно добавлена под номером [%v]", test_task.Title, lastInsertedIDString)
+	return returnString
 }
 
 // функция для Fiber Создавать задачу
@@ -168,7 +170,8 @@ func PostTask(c *fiber.Ctx) error {
 	}
 	postedTaskID := CreateTask(task)
 	//возвращает id добавленной задачи
-	return c.JSON(postedTaskID)
+	return c.SendString(postedTaskID)
+	//c.JSON(postedTaskID)
 }
 
 // Обновить задачу (статус)
