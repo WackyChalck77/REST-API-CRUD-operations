@@ -27,11 +27,22 @@ Delete/tasks/delete/:taskIDToDelete - удаление задачи<br>
 "Description": "Описание новой тестовой задачи",  
 "Status": "new"  
 }  
-Примечание: поле Status может принимать только следующие значения: 'new', 'in_progress', 'done'.
+Примечание: _поле Status может принимать только следующие значения: 'new', 'in_progress', 'done'._
 
 Происходит вставка задачи в таблицу,
 [Postman](img/img_3.jpg).
 Таблица в Postgres,
 [Postgres](img/img_4.jpg).
+
+### Обновление статуса задачи
+Используется метод POST http://127.0.0.1:3000/tasks/update/. Данные передаются в следующем виде (JSON): <br>
+{  
+"ID": 6,  
+"Status": "done"  
+}  
+Происходит вставка нового статуса задачи в таблицу в задачу с соответствующим ID,
+[Postman](img/img_4.jpg).
+Таблица в Postgres,
+[Postgres](img/img_5.jpg).
 
 
