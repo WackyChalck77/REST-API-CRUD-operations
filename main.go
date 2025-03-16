@@ -48,17 +48,10 @@ func main() {
 	// 	"Status": "done"
 	// 	}
 
-	/*тесты функций*/
-	//Connect(driverName, dataSource)
-	//SelectAlltasks()
-	//CreateTask(test_task)
-	//UpdateTaskStatus(update_task)
-	//DeleteTask(12)
-
 	app := fiber.New()
 	//прямая ссылка
 	app.Get("/", func(c *fiber.Ctx) error {
-		err := c.SendString("Добро пожаловать на Fiber API")
+		err := c.SendString("Добро пожаловать на REST API.")
 		if err != nil {
 			return err
 		}
@@ -77,13 +70,14 @@ func main() {
 	//Обновление статуса задачи API
 	app.Put("/tasks/update", UpdateTask)
 
-	//сервер
+	//работа сервера
 	err := app.Listen(":3000")
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
+// функция соединения с БД
 func Connect() *sql.DB {
 	db, err := sql.Open(driverName, dataSource)
 	if err != nil {
@@ -95,7 +89,7 @@ func Connect() *sql.DB {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Успешное подключение к базе данных!")
+	fmt.Println("Успешное подключение к базе данных")
 	return db
 }
 
@@ -111,18 +105,12 @@ func SelectAlltasks() []model.Task {
 	tasks := []model.Task{}
 	for rows.Next() {
 		var task model.Task
-		//	task = model.Task{}
 		err = rows.Scan(&task.ID, &task.Title, &task.Description, &task.Status, &task.Created_at, &task.Updated_at)
 		if err != nil {
 			log.Fatal(err.Error())
-			//continue
 		}
 		tasks = append(tasks, task)
 	}
-
-	// for _, task := range tasks {
-	// 	fmt.Printf("%+v \n", task)
-	// }
 	return tasks
 }
 
@@ -171,7 +159,6 @@ func PostTask(c *fiber.Ctx) error {
 	postedTaskID := CreateTask(task)
 	//возвращает id добавленной задачи
 	return c.SendString(postedTaskID)
-	//c.JSON(postedTaskID)
 }
 
 // Обновить задачу (статус)
