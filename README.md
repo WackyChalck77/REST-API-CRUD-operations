@@ -45,8 +45,8 @@ Delete/tasks/delete/:taskIDToDelete - удаление задачи<br>
 Таблица в Postgres,
 [Postgres](img/img_6.jpg).
 
-### Обновление статуса задачи
-Используется метод DELETE http://127.0.0.1:3000/tasks/:taskIDToDelete. Данные по ID удаляемой задачи передаются в ссылке: http://127.0.0.1:3000/tasks/delete/31.  
+### Удаление задачи
+Используется метод DELETE http://127.0.0.1:3000/tasks/:taskIDToDelete. Данные по ID удаляемой задачи передаются в ссылке (здесь ID=31): http://127.0.0.1:3000/tasks/delete/31.  
 Происходит удаление задачи с соответствующим ID в таблице,
 [Postman](img/img_7.jpg).
 Таблица в Postgres,
