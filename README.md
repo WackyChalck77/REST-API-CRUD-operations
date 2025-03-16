@@ -13,7 +13,12 @@ Put/tasks/update - обновление статуса задачи<br>
 Delete/tasks/delete/:taskIDToDelete - удаление задачи<br>
 
 ## Примеры выполнения CRUD-операций
-###Получение списка всех имеющихся задач
-[postman][img/img_1.jpg]
-[postgres][img/img_2.jpg]
+### Получение списка всех имеющихся задач
+Используется метод GET http://127.0.0.1:3000/tasks/.<br>
+Происходит выдача таблицы задач.
+[postman](img/img_1.jpg)
+Таблица в Postgres
+[postgres](img/img_2.jpg)
+
+### Получение списка всех имеющихся задач
 
