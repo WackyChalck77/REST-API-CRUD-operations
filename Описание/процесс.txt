@@ -1,0 +1,20 @@
+- инициализация модуля [+]
+  mkdir myapi
+  cd myapi
+  go mod init myapi
+  C:\Work IMMO\Проекты\Go\06_rest>go mod init Go/06_rest
+
+- установка драйвера sql Postgre [+]
+  go get github.com/jackc/pgx/v5
+  
+
+- создание папки database -> configuration [+]
+файл config.json c данными для соединения
+
+- установка fiber [+]
+  go get github.com/gofiber/fiber/v2
+
+- создание функции для запуска БД [+]
+открываем, пингуем, закрываем
+
+- проблемы с прокидыванием mod - заглянуть в go.mod и узнать путь к проекту."your_project/model"   "Go/06_rest/model"
